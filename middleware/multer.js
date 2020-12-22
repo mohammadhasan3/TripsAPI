@@ -1,4 +1,4 @@
-//Multer Stuff
+// Multer Stuff
 const multer = require("multer");
 const storage = multer.diskStorage({
   destination: "./media",
