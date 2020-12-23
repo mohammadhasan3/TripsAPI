@@ -21,3 +21,17 @@ exports.tripsList = async (req, res) => {
     next(err);
   }
 };
+
+//Trip create
+exports.tripCreate = async (req, res) => {
+  try {
+    if (req.file) {
+      req.body.image = `http://${req.get("host")}/media/${req.file.filename}`;
+    }
+    req.body.userId = req.user.id;
+    const newTrip = await Trip.create(req.body);
+    res.status(201).json(newTrip);
+  } catch (error) {
+    next(error);
+  }
+};
