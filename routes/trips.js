@@ -8,6 +8,7 @@ const {
   fetchTrip,
   tripCreate,
   tripUpdate,
+  tripDelete,
 } = require("../controllers/tripController");
 
 router.param("tripId", async (req, res, next, tripId) => {
@@ -37,6 +38,13 @@ router.put(
   upload.single("image"),
   passport.authenticate("jwt", { session: false }),
   tripUpdate
+);
+
+//Delete Trip
+router.delete(
+  "/:tripId",
+  passport.authenticate("jwt", { session: false }),
+  tripDelete
 );
 
 module.exports = router;

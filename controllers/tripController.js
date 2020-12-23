@@ -66,3 +66,25 @@ exports.tripUpdate = async (req, res, next) => {
     next(error);
   }
 };
+
+//Delete Trip
+exports.tripDelete = async (req, res, next) => {
+  const { tripId } = req.params;
+  try {
+    const foundTrip = await Trip.findByPk(tripId);
+    if (req.user.id === req.trip.userId) {
+      if (foundTrip) {
+        await foundTrip.destroy();
+        res.status(204).end();
+      } else {
+        res.status(404).json({ message: "Trip not found" });
+      }
+    } else {
+      const err = new Error("Unauthorized");
+      err.status = 401;
+      next(err);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
