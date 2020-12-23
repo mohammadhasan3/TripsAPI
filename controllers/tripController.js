@@ -31,6 +31,10 @@ exports.tripCreate = async (req, res) => {
     req.body.userId = req.user.id;
     const newTrip = await Trip.create(req.body);
     res.status(201).json(newTrip);
+  } catch (error) {
+    next(error);
+  }
+};
 
 //Update Trips
 exports.tripUpdate = async (req, res, next) => {
