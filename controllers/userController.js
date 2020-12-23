@@ -3,6 +3,11 @@ const { User } = require("../db/models");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET, JWT_EXPIRATION_MS } = require("../config/keys");
 
+/**
+ * What's this controller for?
+ *
+ * Do you need a user list route?
+ */
 //UsersList
 exports.usersList = async (req, res, next) => {
   try {
