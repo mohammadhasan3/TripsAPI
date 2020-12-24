@@ -11,6 +11,7 @@ const {
   tripDelete,
 } = require("../controllers/tripController");
 
+// Test your delete or update endpoint with a trip ID that doesn't exist.
 router.param("tripId", async (req, res, next, tripId) => {
   const trip = await fetchTrip(tripId, next);
   if (trip) {

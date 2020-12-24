@@ -44,6 +44,7 @@ exports.signup = async (req, res, next) => {
 
 //Sign in
 exports.signin = (req, res) => {
+  // remove console logs
   console.log("exports.signin -> req", req);
   const { user } = req;
   const payload = {

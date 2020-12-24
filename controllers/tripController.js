@@ -50,6 +50,7 @@ exports.tripUpdate = async (req, res, next) => {
       }
       if (foundTrip) {
         await foundTrip.update(req.body);
+        // remove commented code you won't use.
         // for (const key in req.body) foundTrip[key] = req.body[key];
         res.status(204).end();
       } else {
@@ -69,10 +70,20 @@ exports.tripUpdate = async (req, res, next) => {
 
 //Delete Trip
 exports.tripDelete = async (req, res, next) => {
-  const { tripId } = req.params;
+  /**
+   * You don't need (1) and (2).
+   * In (3), you're using `req.trip`. So instead of using foundTrip,
+   * use `req.trip`.
+   * The `router.param(...)` in `routes/trips.js` does (1) and (2),
+   * so you don't have to do them here in the controller.
+   *
+   * Same applies to other controllers.
+   */
+  const { tripId } = req.params; // (1)
   try {
-    const foundTrip = await Trip.findByPk(tripId);
+    const foundTrip = await Trip.findByPk(tripId); // (2)
     if (req.user.id === req.trip.userId) {
+      // (3)
       if (foundTrip) {
         await foundTrip.destroy();
         res.status(204).end();
