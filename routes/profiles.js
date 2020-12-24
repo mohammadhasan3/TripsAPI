@@ -2,7 +2,13 @@ const express = require("express");
 const upload = require("../middleware/multer");
 const router = express.Router();
 const passport = require("passport");
-const { profileUpdate } = require("../controllers/profileController");
+const {
+  profileUpdate,
+  profilesList,
+} = require("../controllers/profileController");
+
+//Get Profiles
+router.get("/", profilesList);
 
 // Edit Profile
 router.put(
