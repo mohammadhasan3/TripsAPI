@@ -71,6 +71,7 @@ exports.tripUpdate = async (req, res, next) => {
 exports.tripDelete = async (req, res, next) => {
   const { tripId } = req.params;
   try {
+    console.log(9);
     const foundTrip = await Trip.findByPk(tripId);
     if (req.user.id === req.trip.userId) {
       if (foundTrip) {
