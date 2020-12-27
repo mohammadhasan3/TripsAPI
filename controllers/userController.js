@@ -37,6 +37,7 @@ exports.signup = async (req, res, next) => {
     };
     const newProfile = await Profile.create({
       userId: newUser.id,
+      username: newUser.username,
     });
     const token = jwt.sign(JSON.stringify(payload), JWT_SECRET);
     res.status(201).json({ token, newProfile });
