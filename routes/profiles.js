@@ -12,7 +12,7 @@ router.get("/", profilesList);
 
 // Edit Profile
 router.put(
-  "/:profileId",
+  "/",
   passport.authenticate("jwt", { session: false }),
   upload.single("image"),
   profileUpdate
