@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       defaultValue: "Welcome to my profile fellow Tripster!",
     },
+
+    username: {
+      type: DataTypes.TEXT,
+    },
   });
   return Profile;
 };
