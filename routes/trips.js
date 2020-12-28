@@ -35,8 +35,8 @@ router.get("/", tripsList);
 //Update Trip
 router.put(
   "/:tripId",
-  upload.single("image"),
   passport.authenticate("jwt", { session: false }),
+  upload.single("image"),
   tripUpdate
 );
 
