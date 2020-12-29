@@ -51,8 +51,7 @@ exports.signup = async (req, res, next) => {
 };
 
 //Sign in
-exports.signin = async (req, res) => {
-  console.log("exports.signin -> req", req);
+exports.signin = async (req, res, next) => {
   const { user } = req;
   try {
     const userProfile = await Profile.findOne({

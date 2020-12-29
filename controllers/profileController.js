@@ -11,7 +11,7 @@ exports.fetchProfile = async (profileId, next) => {
 };
 
 //ProfilesList
-exports.profilesList = async (req, res) => {
+exports.profilesList = async (req, res, next) => {
   try {
     const profiles = await Profile.findAll({
       attributes: { exclude: ["createdAt", "updatedAt"] },
